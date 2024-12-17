@@ -149,7 +149,7 @@ exports.inicioSesion = async (req, res)=>{
                 }
                 let SECRET_KEY_JWT = process.env.SECRET_KEY_JWT
                 let token =jwt.sign(payload, SECRET_KEY_JWT, {expiresIn: '24h'} )
-                res.status(200).json(token)
+                res.status(200).json({token:token, user:user.roll})
 
 //                  tokenn recibe 3 parametros
                 // informacion (payload)=infromacion que voy a guardar en ese token

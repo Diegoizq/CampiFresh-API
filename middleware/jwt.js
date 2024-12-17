@@ -15,6 +15,7 @@ exports.verificacionToken = async (req, res, next) => {
         if (error) {
             res.status(400).send({error: "token invalido"})
         } else {{
+            req.usuario = decoded
             next()
         }}
 
