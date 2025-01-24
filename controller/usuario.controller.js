@@ -9,28 +9,25 @@ exports.obtenerUsuarios = async (req, res)=>{
         let usuarios = await usuarioModel.find()
         res.status(200).json(usuarios)
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
         res.status(500).send({error:"algo ocurrio mk"})
     }
 }
 exports.obtenerUnUsuario = async (req, res)=>{
     try {
         let id = req.params.id
-        if (id.length == 24) {
-            let user = await usuarioModel.findOne({_id: id})
+        let user = await usuarioModel.findOne({_id: id})
             
             if (user) {
                 res.status(200).json(user)    
             } else {
                 res.status(500).send({error:"usuario no encontrado"})
             }
-        } else {
-            res.status(500).send({error:"id  invalido"})
-        }
+   
 
         
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
         res.status(500).send({error:"algo ocurrio mk"})
     }
     
@@ -56,6 +53,8 @@ exports.crearUsuario = async (req, res)=>{
                 }
             
         } catch (error) {
+            console.log(error.message);
+            
             res.send({error:"Error cstch"})
         }
     // try {
@@ -99,7 +98,7 @@ exports.eliminarUsuario = async (req, res)=>{
         }
     
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
         res.status(500).send({error:"algo ocurrio mk"})
     }
 }
@@ -132,7 +131,7 @@ exports.actualizarUsuario = async (req, res)=>{
 
     
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
         res.status(500).send({error:"algo ocurrio mk"}) 
     }
 }
@@ -166,7 +165,7 @@ exports.inicioSesion = async (req, res)=>{
             res.status(400).send({error: "correo inavlido bro"})
         }
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
         res.status(400).send({error: "ha ocurrido algo"})
     }
 }

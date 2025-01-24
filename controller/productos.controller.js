@@ -10,7 +10,7 @@ exports.obtenerProductos = async (req, res) => {
         let productos = await productoModel.find()
         res.status(200).json(productos)
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
         res.status(500).send({error:"ha ocurrido un error"})
         
     }
@@ -22,7 +22,7 @@ exports.obtenerUnProducto = async (req, res) => {
         res.status(200).json(product)
         
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
         res.status(500).send({error:"ha ocurrido un error"})
         
     }
@@ -34,7 +34,7 @@ exports.crearProducto = async (req, res) => {
         await nuevoproducto.save()
         res.status(200).json(nuevoproducto)
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
         res.status(500).send({error:"ha ocurrido un error"}) 
     }
     
@@ -45,7 +45,7 @@ exports.eliminarProducto = async (req, res) => {
         let deleteado = await productoModel. findOneAndDelete({_id:id})
         res.status(200).json(deleteado)
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
         res.status500.send({error:"ha ocurrido un error"})
     }
 }
@@ -60,7 +60,7 @@ exports.actualizarProducto = async (req, res) => {
         res.status(200).json(actualizado)
 
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
         res.status(500).send({error:"ha ocurrido un error"}) 
     }
     
